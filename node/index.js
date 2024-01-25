@@ -12,15 +12,10 @@ app.get('/', (req, res) => {
     port: '3306'
   });
 
-  let message = '';
   con.connect(function(err) {
     if (err) {
-      console.log(err);
-      message = err;
       res.send('DB Connected status is failed ')
     } else {
-      message = "Connected!"
-      console.log(message);
       res.send('DB Connected status is Connected')
     }
   });
@@ -30,7 +25,3 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
-
-
-

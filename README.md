@@ -1,15 +1,28 @@
-Minimal application
-Node js container: 1
+## How to run the K8s cluster
 
+### Prerequisites
+- Minikube
+- Kubectl
+- Docker
+- https://hub.docker.com/r/minhlkz/simple-nodejs-express
 
+### Start Minikube Node 
 
-Full application
-Node js container: 2 pods
-Mysql container: 1 pod
+```sh
+minikube start
+```
 
-Secret: for mysql user/pass
-Config map: mysql endpoint
+### Apply the secrets, configMaps, deployments
 
-Service for node and mysql
+```sh
+kubectl apply -f db-config.yaml 
+kubectl apply -f db-secret.yaml 
+kubectl apply -f deployment-db.yaml 
+kubectl apply -f deployment-web.yaml 
+```
 
-Node connect to mysql
+### How to run in browser
+
+```sh
+minikube service web-express-service
+```
